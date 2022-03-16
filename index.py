@@ -15,7 +15,7 @@ PORT = int(os.environ.get('PORT', '8443'))
 def start(update, context):
     update.message.reply_text(update.message.message_id)
     update.message.reply_text(update.message.message_id)
-    markup = telebot.types.InlineKeyboardMarkup(row_width=1)
+    markup = InlineKeyboardMarkup(row_width=1)
     update.message.reply_text(update.message.message_id)
     b1=telebot.types.InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
