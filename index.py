@@ -19,7 +19,7 @@ def start(update, context):
     b2=telebot.types.InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
-    bot.send_message(update.message.chat.id, text="Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
+    update.message.send_message(text="Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
