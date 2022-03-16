@@ -22,14 +22,16 @@ def start(update, context):
     b1=InlineKeyboardButton(text='English', callback_data='English')
     b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
-    markup = InlineKeyboardMarkup([b1, b2, b3])
+    markup = InlineKeyboardMarkup()
+    update.message.reply_text('Hi!')
+    markup.add(b1, b2, b3)
     update.message.reply_text('Hi!')
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Developed by renamed_user\nYou can use this but not forget that it is your property')
+    update.message.reply_text('Developed by renamed_user\nYou can use this but not forget that it is not your property')
 
 
 def echo(update, context):
