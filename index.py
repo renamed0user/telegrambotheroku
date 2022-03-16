@@ -17,7 +17,7 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text(update.message.message_id)
-    mybot=telegram.Bot(token=TOKEN)
+    mybot=telegram.Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text(update.message.message_id)
     bot.send_message(update.message.chat_id.id,'df')
     markup = InlineKeyboardMarkup()
