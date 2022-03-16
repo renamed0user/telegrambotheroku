@@ -1,7 +1,6 @@
 import logging
 import os
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
-
+import telegram
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -9,20 +8,21 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 PORT = int(os.environ.get('PORT', '8443'))
-
+TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
+bot=telegram.Bot(TOKEN)
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text(update.message.message_id)
     update.message.reply_text(update.message.message_id)
-    markup = telebot.replyKeyboardMarkup()
+    markup = telegram.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
-    b1=telebot.types.InlineKeyboardButton(text='English', callback_data='English')
+    b1=telegram.InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
-    b2=telebot.types.InlineKeyboardButton(text='Українська', callback_data='Українська')
-    b3=telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский')
+    b2=telegram.InlineKeyboardButton(text='Українська', callback_data='Українська')
+    b3=telegram.InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
-    update.message.reply_text(update.message.message_id)
+    bot.send_message('',reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
@@ -44,7 +44,6 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
     APP_NAME='https://telebottobrother.herokuapp.com/'
     
     updater = Updater(TOKEN, use_context=True)
