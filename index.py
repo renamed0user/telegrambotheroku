@@ -15,6 +15,11 @@ PORT = int(os.environ.get('PORT', '8443'))
 def start(update, context):
     update.message.reply_text('Hi!')
     updater.message.reply_text('Choose a language\nВиберіть мову\nВыберите язык')
+    markup = types.InlineKeyboardMarkup()
+    buttonLang1 = types.KeyboardButton("English")
+    buttonLang2 = types.KeyboardButton("Українська")
+    buttonLang3 = types.KeyboardButton("Русский")
+    markup.add(buttonLang1, buttonLang2, buttonLang3)
 
 
 def help(update, context):
