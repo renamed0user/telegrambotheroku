@@ -12,10 +12,11 @@ logger = logging.getLogger(__name__)
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
-bot=telegram.Bot(TOKEN)
+
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
+    bot=telegram.Bot(TOKEN)
     update.message.reply_text(update.message.message_id)
     update.message.reply_text(update.message.message_id)
     bot.send_message(update.message.chat_id.id,'df')
