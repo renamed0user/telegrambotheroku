@@ -22,9 +22,10 @@ def start(update, context):
     update.message.reply_text(update.message.chat_id)
     b1=InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
-    b2=types.InlineKeyboardButton(text='Українська', callback_data='Українська')
-    b3=types.InlineKeyboardButton(text='Русский', callback_data='Русский')
+    b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
+    b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup = InlineKeyboardMarkup(b1,b2,b3)
+    update.message.reply_text(update.message.message_id)
     bot.send_message(update.message.chat_id,"dsf",reply_markup=markup)
     bot.send_message(update.message.chat_id, 'Choose a language\nВиберіть мову\nВыберите язык'.format(update.message.from_user, bot.get_me()))
 
