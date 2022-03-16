@@ -19,9 +19,9 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 def start(update, context):
     update.message.reply_text('Hi!')
     bot = Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    b1=KeyboardButton('English', True, True)
-    b2=KeyboardButton('Українська', True, True)
-    b3=KeyboardButton('Русский', True, True)
+    b1=KeyboardButton('English', true, true)
+    b2=KeyboardButton('Українська', true, true)
+    b3=KeyboardButton('Русский', true, true)
     update.message.reply_text('Hi!')
     markup = ReplyKeyboardMarkup([b1, b2, b3])
     update.message.reply_text('Hi!')
