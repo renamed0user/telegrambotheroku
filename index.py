@@ -38,7 +38,7 @@ def main():
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
     TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
-    APP_NAME='https://telebottobrother2.herokuapp.com/'
+    APP_NAME='https://telebottobrother.herokuapp.com/'
     
     updater = Updater(TOKEN, use_context=True)
 
