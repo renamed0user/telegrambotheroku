@@ -1,6 +1,6 @@
 import logging
 import os
-import telegram
+from telegram import Bot, Message, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
@@ -16,16 +16,16 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
-    bot=telegram.Bot(TOKEN)
     update.message.reply_text(update.message.message_id)
+    mybot=bot(TOKEN)
     update.message.reply_text(update.message.message_id)
     bot.send_message(update.message.chat_id.id,'df')
-    markup = telegram.InlineKeyboardMarkup()
+    markup = InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
-    b1=telegram.InlineKeyboardButton(text='English', callback_data='English')
+    b1=InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
-    b2=telegram.InlineKeyboardButton(text='Українська', callback_data='Українська')
-    b3=telegram.InlineKeyboardButton(text='Русский', callback_data='Русский')
+    b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
+    b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
     bot.send_message(' ',reply_markup=markup)
 
