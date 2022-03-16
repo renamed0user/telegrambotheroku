@@ -20,7 +20,9 @@ def start(update, context):
     update.message.reply_text(update.message.message_id)
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text(update.message.message_id)
-    bot.send_message(update.message.chat_id,"df")
+    bot.send_message(update.message.chat.id,
+                     "Choose a language\nВиберіть мову\nВыберите язык".format(message.from_user, bot.get_me()),
+                     parse_mode='html')
     markup = types.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
     b1=types.InlineKeyboardButton(text='English', callback_data='English')
