@@ -1,7 +1,7 @@
 import logging
 import os
 import telebot
-
+from telegram import Bot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
@@ -18,7 +18,7 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text(update.message.message_id)
-    bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
+    bot = Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text(update.message.chat_id)
     markup = telebot.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
