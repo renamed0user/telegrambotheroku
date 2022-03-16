@@ -14,12 +14,7 @@ PORT = int(os.environ.get('PORT', '8443'))
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text('Hi!')
-    markup = telebot.types.InlineKeyboardMarkup(row_width=1)
-    b1=telebot.types.InlineKeyboardButton(text='English', callback_data='English'))
-    b2=telebot.types.InlineKeyboardButton(text='Українська', callback_data='Українська'))
-    b3=telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский'))
-    markup.add(b1,b2,b3)
-    bot.send_message(update.message.chat.id, text="Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
+
 
 def help(update, context):
     """Send a message when the command /help is issued."""
