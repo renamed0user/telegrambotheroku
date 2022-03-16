@@ -22,9 +22,7 @@ def start(update, context):
     b1=KeyboardButton(text='English', callback_data='English')
     b2=KeyboardButton(text='Українська', callback_data='Українська')
     b3=KeyboardButton(text='Русский', callback_data='Русский')
-    markup = ReplyKeyboardMarkup(resize_keyboard=True)
-    update.message.reply_text('Hi!')
-    markup.add(b1, b2, b3)
+    markup = ReplyKeyboardMarkup([b1, b2, b3],resize_keyboard=True)
     update.message.reply_text('Hi!')
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
