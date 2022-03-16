@@ -1,6 +1,5 @@
 import logging
 import os
-import telebot
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Enable logging
