@@ -19,9 +19,10 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 def start(update, context):
     update.message.reply_text('Hi!')
     bot = Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    b1=KeyboardButton(text='English', callback_data='English')
-    b2=KeyboardButton(text='Українська', callback_data='Українська')
-    b3=KeyboardButton(text='Русский', callback_data='Русский')
+    b1=ReplyKeyboardButton(text='English', callback_data='English')
+    b2=ReplyKeyboardButton(text='Українська', callback_data='Українська')
+    b3=ReplyKeyboardButton(text='Русский', callback_data='Русский')
+    update.message.reply_text('Hi!')
     markup = ReplyKeyboardMarkup([b1, b2, b3])
     update.message.reply_text('Hi!')
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
