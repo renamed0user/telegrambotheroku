@@ -22,7 +22,7 @@ def start(update, context):
     b1=InlineKeyboardButton(text='English', callback_data='English')
     b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
-    markup = ReplyKeyboardMarkup([b1, b2, b3])
+    markup = InlineKeyboardMarkup([b1, b2, b3])
     update.message.reply_text('Hi!')
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", markup)
 
