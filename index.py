@@ -1,6 +1,6 @@
 import logging
 import os
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+import telebot
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -15,7 +15,7 @@ PORT = int(os.environ.get('PORT', '8443'))
 def start(update, context):
     update.message.reply_text(update.message.message_id)
     update.message.reply_text(update.message.message_id)
-    markup = InlineKeyboardMarkup()
+    markup = replyKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
     b1=telebot.types.InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
