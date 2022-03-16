@@ -1,7 +1,7 @@
 import logging
 import os
 import telebot
-from telegram import Bot, Message, InlineKeyboardButton, InlineKeyboardMarkup
+from telebot import types
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
@@ -18,17 +18,17 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text(update.message.message_id)
-    mybot=telegram.Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
+    bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text(update.message.message_id)
-    bot.send_message(update.message.chat_id.id,'df')
-    markup = InlineKeyboardMarkup()
+    bot.send_message(update.message.chat_id.id,"df")
+    markup = types.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
-    b1=InlineKeyboardButton(text='English', callback_data='English')
+    b1=types.InlineKeyboardButton(text='English', callback_data='English')
     update.message.reply_text(update.message.message_id)
-    b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
-    b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
+    b2=types.InlineKeyboardButton(text='Українська', callback_data='Українська')
+    b3=types.InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
-    bot.send_message(' ',reply_markup=markup)
+    bot.send_message(update.message.chat_id.id,"dsf",reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
