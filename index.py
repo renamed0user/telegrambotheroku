@@ -19,6 +19,7 @@ def start(update, context):
     markup.add(telebot.types.InlineKeyboardButton(text='English', callback_data='English'))
     markup.add(telebot.types.InlineKeyboardButton(text='Українська', callback_data='Українська'))
     markup.add(telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский'))
+    bot.send_message(message.chat.id, text="Choose the genre API 📍", reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
