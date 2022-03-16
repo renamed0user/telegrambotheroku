@@ -19,7 +19,7 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 def start(update, context):
     update.message.reply_text(update.message.message_id)
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    update.message.reply_text(update.message.message_id)
+    update.message.reply_text(update.message.chat.chat_id)
     bot.send_message(update.message.chat.chat_id,
                      "Choose a language\nВиберіть мову\nВыберите язык".format(message.from_user, bot.get_me()),
                      parse_mode='html')
