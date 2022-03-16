@@ -18,7 +18,7 @@ def start(update, context):
     markup = types.InlineKeyboardMarkup()
     markup.add(telebot.types.InlineKeyboardButton(text='English', callback_data='English'))
     markup.add(telebot.types.InlineKeyboardButton(text='Українська', callback_data='Українська'))
-    markup.add(telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский')
+    markup.add(telebot.types.InlineKeyboardButton(text='Русский', callback_data='Русский'))
 
 def help(update, context):
     """Send a message when the command /help is issued."""
