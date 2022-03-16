@@ -18,6 +18,7 @@ bot=telegram.Bot(TOKEN)
 def start(update, context):
     update.message.reply_text(update.message.message_id)
     update.message.reply_text(update.message.message_id)
+    bot.send_message(update.message.chat_id.id,'df')
     markup = telegram.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
     b1=telegram.InlineKeyboardButton(text='English', callback_data='English')
@@ -25,7 +26,7 @@ def start(update, context):
     b2=telegram.InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=telegram.InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
-    bot.send_message('',reply_markup=markup)
+    bot.send_message(' ',reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
