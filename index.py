@@ -17,17 +17,13 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
-    update.message.reply_text(update.message.message_id)
+    update.message.reply_text('Hi!')
     bot = Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    update.message.reply_text(update.message.chat_id)
     b1=InlineKeyboardButton(text='English', callback_data='English')
-    update.message.reply_text(update.message.message_id)
     b2=InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=InlineKeyboardButton(text='Русский', callback_data='Русский')
-    update.message.reply_text(update.message.message_id)
     markup = InlineKeyboardMarkup([b1, b2, b3])
-    update.message.reply_text(update.message.message_id)
-    bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык")
+    bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
 
 def help(update, context):
