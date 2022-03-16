@@ -1,5 +1,6 @@
 import logging
 import os
+import telebot
 from telegram import Bot, Message, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
