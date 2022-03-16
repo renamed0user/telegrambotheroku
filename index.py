@@ -20,7 +20,6 @@ def start(update, context):
     update.message.reply_text(update.message.message_id)
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text(update.message.chat_id)
-    bot.send_message(update.message.chat_id, 'Choose a language\nВиберіть мову\nВыберите язык'.format(update.message.from_user, bot.get_me()))
     markup = types.InlineKeyboardMarkup()
     update.message.reply_text(update.message.message_id)
     b1=types.InlineKeyboardButton(text='English', callback_data='English')
@@ -28,7 +27,9 @@ def start(update, context):
     b2=types.InlineKeyboardButton(text='Українська', callback_data='Українська')
     b3=types.InlineKeyboardButton(text='Русский', callback_data='Русский')
     markup.add(b1,b2,b3)
-    bot.send_message(update.message.chat_id.id,"dsf",reply_markup=markup)
+    bot.send_message(update.message.chat_id,"dsf",reply_markup=markup)
+    bot.send_message(update.message.chat_id, 'Choose a language\nВиберіть мову\nВыберите язык'.format(update.message.from_user, bot.get_me()))
+
 
 def help(update, context):
     """Send a message when the command /help is issued."""
