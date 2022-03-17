@@ -23,7 +23,7 @@ def start(update, context):
     b2=KeyboardButton('Українська')
     b3=KeyboardButton('Русский')
     update.message.reply_text('Hi!')
-    markup = ReplyKeyboardMarkup()
+    markup = ReplyKeyboardMarkup([b1 b2 b3])
     update.message.reply_text('Hi!')
     bot.reply_markup(markup)
     update.message.reply_text('Hi!')
