@@ -23,7 +23,7 @@ def start(update, context):
     b2=InlineKeyboardButton('Українська')
     b3=InlineKeyboardButton('Русский')
     update.message.reply_text('Hi!')
-    markup = InlineKeyboardMarkup(b1)
+    markup = ReplyKeyboardMarkup(b1)
     update.message.reply_text('Hi!')
     bot.reply_markup(markup)
     update.message.reply_text('Hi!')
