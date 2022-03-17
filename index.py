@@ -1,5 +1,6 @@
 import logging
 import os
+import telebot
 from telegram import Bot, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
@@ -17,10 +18,10 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text('Hi!')
-    bot = Bot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    b1=KeyboardButton('English')
-    b2=KeyboardButton('Українська')
-    b3=KeyboardButton('Русский')
+    bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
+    b1=telebot.KeyboardButton('English')
+    b2=telebot.KeyboardButton('Українська')
+    b3=telebot.KeyboardButton('Русский')
     update.message.reply_text('Hi!')
     bot.ReplyKeyboardMarkup([b1, b2, b3])
     update.message.reply_text('Hi!')
@@ -65,6 +66,7 @@ def main():
 
     # log all errors
     dp.add_error_handler(error)
+
     updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
     updater.idle()
 
