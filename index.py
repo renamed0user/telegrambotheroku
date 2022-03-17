@@ -2,7 +2,7 @@ import logging
 import os
 import telebot
 from telebot import types
-from telegram import Bot, InlineKeyboardMarkup, InlineKeyboardButton, KeyboardButton, ReplyKeyboardMarkup
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 
@@ -21,16 +21,15 @@ def start(update, context):
     update.message.reply_text('Hi!')
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
     update.message.reply_text('Hi!')
-    b1=telebot.types.KeyboardButton('English')
-    b2=telebot.types.KeyboardButton('Українська')
-    b3=telebot.types.KeyboardButton('Русский')
+    b1=types.KeyboardButton('English')
+    b2=types.KeyboardButton('Українська')
+    b3=types.KeyboardButton('Русский')
     update.message.reply_text('Hi!')
-    bot.ReplyKeyboardMarkup([b1, b2, b3])
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     update.message.reply_text('Hi!')
-    bot.reply_markup(markup)
+    markup.add(b1,b2,b3)
     update.message.reply_text('Hi!')
-    bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык")
-
+    bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык",parse_mode='html', reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
