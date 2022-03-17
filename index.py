@@ -25,10 +25,8 @@ def start(update, context):
     update.message.reply_text('Hi!')
     markup = InlineKeyboardMarkup(b1)
     update.message.reply_text('Hi!')
-    markup.add(b2)
-    markup.add(b3)
-    update.message.reply_text('Hi!')
     bot.reply_markup(markup)
+    update.message.reply_text('Hi!')
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык")
 
 
