@@ -19,6 +19,7 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 def start(update, context):
     update.message.reply_text('Hi!')
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
+    update.message.reply_text('Hi!')
     b1=telebot.KeyboardButton('English')
     b2=telebot.KeyboardButton('Українська')
     b3=telebot.KeyboardButton('Русский')
