@@ -23,7 +23,7 @@ def start(update, context):
     b1=types.KeyboardButton('English')
     b2=types.KeyboardButton('Українська')
     b3=types.KeyboardButton('Русский')
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True))
+    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     markup.add(b1,b2,b3)
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык",parse_mode='html', reply_markup=markup)
 
