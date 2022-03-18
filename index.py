@@ -29,7 +29,7 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-def button_press(bot, update):
+def button_press(update, bot):
     if update.callback_quary.message.text=='English':
         bot.send_message(update.callback_quary.message.chat_id,'You choose English!')
     elif update.callback_quary.message.text=='Українська':
