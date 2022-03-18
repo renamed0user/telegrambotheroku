@@ -16,20 +16,13 @@ logger = logging.getLogger(__name__)
 
 
 bot = telebot.TeleBot(TOKEN)
-bot.remove_webhook()
-
-def cb_en(update, context):
-    bot.send_message(update.message.chat_id,"You choose English")
-
-def cb_ua(update, context):
-    bot.send_message(update.message.chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
 
 def start(update, context):
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English",callback_data='cb_en'),
-                               types.InlineKeyboardButton("Українська",callback_data='cb_ua'))
+    markup.add(types.InlineKeyboardButton("English"),
+                               types.InlineKeyboardButton("Українська"))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
@@ -41,6 +34,11 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
+def button_press(update, context):
+    if update.message.text=='English':
+        update.message.reply_text('You choose English!')
+    elif update.message.text=='Українська':
+        update.message.reply_text('Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
 
 def main():
     """Start the bot."""
