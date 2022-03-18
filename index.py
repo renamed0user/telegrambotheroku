@@ -10,7 +10,7 @@ APP_NAME='https://telebottobrother.herokuapp.com/'
 
 app = Flask(__name__)
 bot = telebot.TeleBot(TOKEN)
-bot.deleteWebhook()
+bot.remove_webhook()
 
 def cb_en(chat_id):
     bot.send_message(chat_id,"You choose English")
