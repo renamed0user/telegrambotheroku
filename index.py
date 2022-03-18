@@ -8,7 +8,7 @@ PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 APP_NAME='https://telebottobrother.herokuapp.com/'
 
-app = web.Application()
+app = web.Application(APP_NAME,PORT)
 bot = telebot.TeleBot(TOKEN)
 bot.remove_webhook()
 
@@ -47,4 +47,4 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-web.run_app(app,APP_NAME,PORT)
+web.run_app(app)
