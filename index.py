@@ -16,23 +16,21 @@ logger = logging.getLogger(__name__)
 
 
 bot = telebot.TeleBot(TOKEN)
-chat_id=0
 
-def cb_en():
+
+def cb_en(chat_id):
     bot.send_message(chat_id,"You choose English")
 
-def cb_ua():
+def cb_ua(chat_id):
     bot.send_message(chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
 
 def start(update, context):
-    chat_id=update.message.chat_id
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English", callback_data="cb_en"),
-                               types.InlineKeyboardButton("Українська", callback_data="cb_ua"))
+    markup.add(types.InlineKeyboardButton("English",cb_en(update.message.chat_id)),
+                               types.InlineKeyboardButton("Українська",cb_ua(update.message.chat_id)))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
-    update.message.reply_text(chat_id)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
