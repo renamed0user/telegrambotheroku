@@ -16,14 +16,13 @@ logger = logging.getLogger(__name__)
 
 
 bot = telebot.TeleBot(TOKEN)
-def send(update, context):
-    update.message.reply_text('Hi!')
+
 def start(update, context):
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English",send),
-                               types.InlineKeyboardButton("Українська",send))
+    markup.add(types.InlineKeyboardButton("English",'1'),
+                               types.InlineKeyboardButton("Українська",'2'))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
@@ -41,6 +40,10 @@ def button_press(update, context):
     elif update.message.text=='Українська':
         update.message.reply_text('Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
 
+def button_pressed(update, context):
+    query=update.callback_query
+    update.message.reply_text(query.data)
+
 def main():
     """Start the bot."""
 
@@ -48,6 +51,7 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CallbackQueryHandler(button_pressed))
     dp.add_handler(MessageHandler(Filters.text, button_press))
     dp.add_error_handler(error)
     updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
