@@ -1,7 +1,7 @@
 import logging
 import os
 import telebot
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+from telegram import InlineKeyboardButton, replyInlineMarkup
 from telebot import types
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
