@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 
 
 bot = telebot.TeleBot(TOKEN)
-
+bot.remove_webhook()
 
 def cb_en(update, context):
     bot.send_message(update.message.chat_id,"You choose English")
