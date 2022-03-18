@@ -3,7 +3,7 @@ import os
 import telebot
 
 from telebot import types
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
