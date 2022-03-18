@@ -42,6 +42,6 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-bot.polling()
+bot.polling(none_stop=True)
 
 
