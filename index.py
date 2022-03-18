@@ -35,7 +35,7 @@ def button_press(update, context):
     elif update.callback_query.message.text=='Українська':
         context.bot.send_message(update.callback_query.message.chat_id,'Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
     else:
-        context.bot.send_message(update.callback_query.message.chat_id,update.callback_query.message.text)
+        context.bot.send_message(update.callback_query.message.chat_id,update.callback_query.data)
 
 def main():
     """Start the bot."""
