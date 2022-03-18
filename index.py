@@ -19,6 +19,7 @@ logger = logging.getLogger(__name__)
 
 def start(update, context):
     update.message.reply_text('Hi!')
+    button_list = []
     for each in ["English", "Українська"]:
         button_list.append(InlineKeyboardButton(each, callback_data=each))
     update.message.reply_text('Hi!')
