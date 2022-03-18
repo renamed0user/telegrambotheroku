@@ -1,7 +1,7 @@
 import logging
 import os
 import telebot
-from flask import Flask, request
+from telegram.ext import Updater
 from telebot import types
 
 
@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-server = Flask(__name__)
+
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -42,6 +42,14 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-bot.polling(none_stop=True)
+def main():
+    """Start the bot."""
 
+    updater = Updater(TOKEN, use_context=True)
+    updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
+    updater.idle()
+
+
+if __name__ == '__main__':
+    main()
 
