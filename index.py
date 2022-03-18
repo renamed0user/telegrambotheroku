@@ -1,7 +1,7 @@
 import logging
 import os
 import telebot
-from telegram import InlineKeyboardButton, ReplyInlineMarkup
+from telegram import InlineKeyboardButton, InlineReplyMarkup
 from telebot import types
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
@@ -22,7 +22,7 @@ def start(update, context):
     for each in ["English", "Українська"]:
         button_list.append(InlineKeyboardButton(each, callback_data=each))
     update.message.reply_text('Hi!')
-    reply_markup = ReplyInlineMarkup(button_list)
+    reply_markup = InlineReplyMarkup(button_list)
     update.message.reply_text('Hi!')
     context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
