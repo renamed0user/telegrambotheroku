@@ -1,20 +1,14 @@
-import logging
 import os
 import telebot
-from telegram.ext import Updater
+from flask import Flask, request
 from telebot import types
 
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 APP_NAME='https://telebottobrother.herokuapp.com/'
-# Enable logging
-logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    level=logging.INFO)
 
-logger = logging.getLogger(__name__)
-
-
+app = Flask(__name__)
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -32,6 +26,7 @@ def start(update, context):
     markup.add(types.InlineKeyboardButton("English",callback_data='cb_en:update.message.chat_id'),
                                types.InlineKeyboardButton("Українська",callback_data='cb_ua:update.message.chat_id'))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
+
 @bot.message_handler(commands=['help'])
 def help(update, context):
     """Send a message when the command /help is issued."""
@@ -42,14 +37,7 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-def main():
-    """Start the bot."""
-
-    updater = Updater(TOKEN, use_context=True)
-    updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
-    updater.idle()
-
-
-if __name__ == '__main__':
-    main()
+bot.remove_webhook()
+bot.set_webhook(APP_NAME + TOKEN)
+app.run()
 
