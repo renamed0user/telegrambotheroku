@@ -1,9 +1,9 @@
 import logging
 import os
 import telebot
-
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telebot import types
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
