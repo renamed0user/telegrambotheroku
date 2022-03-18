@@ -26,10 +26,10 @@ def cb_ua(update):
 
 def start(update, context):
     update.message.reply_text('Hi!')
-    markup = InlineKeyboardMarkup()
+    markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("English", callback_data="cb_en"),
-                               InlineKeyboardButton("Українська", callback_data="cb_ua"))
+    markup.add(types.InlineKeyboardButton("English", callback_data="cb_en"),
+                               types.InlineKeyboardButton("Українська", callback_data="cb_ua"))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
 def help(update, context):
