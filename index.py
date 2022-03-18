@@ -40,10 +40,9 @@ def button_press(update, context):
     elif update.message.text=='Українська':
         update.message.reply_text('Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
 
-def button_pressed(update, context):
+def button_pressed(bot, update):
     query=update.callback_query
-    update.message.reply_text(query.data)
-
+    bot.send_message(query.message.chat_id,str(query.data))
 def main():
     """Start the bot."""
 
