@@ -10,7 +10,7 @@ APP_NAME='https://telebottobrother.herokuapp.com/'
 
 app = Flask(__name__)
 bot = telebot.TeleBot(TOKEN)
-
+bot.deleteWebhook()
 
 def cb_en(chat_id):
     bot.send_message(chat_id,"You choose English")
@@ -37,7 +37,7 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-bot.remove_webhook()
+
 bot.set_webhook(APP_NAME + TOKEN)
 app.run()
 
