@@ -21,8 +21,8 @@ def start(update, context):
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English"),
-                               types.InlineKeyboardButton("Українська"))
+    markup.add(types.InlineKeyboardButton("English",update.message.reply_text('Hi!')),
+                               types.InlineKeyboardButton("Українська",update.message.reply_text('Hi!')))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
