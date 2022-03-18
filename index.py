@@ -16,13 +16,14 @@ logger = logging.getLogger(__name__)
 
 
 bot = telebot.TeleBot(TOKEN)
-
+def send(update, context):
+    update.message.reply_text('Hi!')
 def start(update, context):
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English",update.message.reply_text('Hi!')),
-                               types.InlineKeyboardButton("Українська",update.message.reply_text('Hi!')))
+    markup.add(types.InlineKeyboardButton("English",send),
+                               types.InlineKeyboardButton("Українська",send)
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
