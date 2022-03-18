@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 def build_menu(buttons, n_cols=1, header_buttons=None, footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
+    menu = [buttons[i:i + n_cols] for i in range(0, 2, n_cols)]
     if header_buttons:
         menu.insert(0, header_buttons)
     if footer_buttons:
