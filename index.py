@@ -16,21 +16,13 @@ logger = logging.getLogger(__name__)
 
 
 
-def build_menu(buttons, n_cols=1, header_buttons=None, footer_buttons=None):
-    menu = [buttons[i:i + n_cols] for i in range(0, 2, n_cols)]
-    if header_buttons:
-        menu.insert(0, header_buttons)
-    if footer_buttons:
-        menu.append(footer_buttons)
-    return menu
-
 def start(update, context):
     update.message.reply_text('Hi!')
     button_list = []
     for each in ["English", "Українська"]:
         button_list.append(InlineKeyboardButton(each, callback_data=each))
     update.message.reply_text('Hi!')
-    reply_markup = InlineKeyboardMarkup(build_menu(button_list))
+    reply_markup = replyInlineMarkup(button_list)
     update.message.reply_text('Hi!')
     context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
