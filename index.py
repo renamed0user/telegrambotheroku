@@ -3,7 +3,7 @@ import os
 import telebot
 
 from telebot import types
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler, InlineKeyboardButton, InlineKeyboardMarkup
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
@@ -19,10 +19,10 @@ logger = logging.getLogger(__name__)
 
 def start(update, context):
     update.message.reply_text('Hi!')
-    markup = types.InlineKeyboardMarkup()
+    markup = InlineKeyboardMarkup()
     markup.row_width = 2
-    markup.add(types.InlineKeyboardButton("English",callback_data='1'),
-                               types.InlineKeyboardButton("Українська",callback_data='2'))
+    markup.add(InlineKeyboardButton("English",callback_data='1'),
+                               InlineKeyboardButton("Українська",callback_data='2'))
     context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
