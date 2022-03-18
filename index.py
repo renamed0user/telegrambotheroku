@@ -18,6 +18,11 @@ logger = logging.getLogger(__name__)
 bot = telebot.TeleBot(TOKEN)
 
 
+def cb_en(update):
+    bot.send_message(update.message.chat_id,"You choose English")
+
+def cb_ua(update):
+    bot.send_message(update.message.chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
 
 def start(update, context):
     update.message.reply_text('Hi!')
