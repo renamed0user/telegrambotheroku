@@ -50,7 +50,7 @@ def main():
     # Post version 12 this will no longer be necessary
 
     
-    updater = Updater(TOKEN, use_context=True)
+    updater = Updater(config.TOKEN, use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
