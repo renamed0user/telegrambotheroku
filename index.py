@@ -15,13 +15,10 @@ logger = logging.getLogger(__name__)
 
 
 def start(update, context):
-    update.message.reply_text('Hi!')
     button_list = []
     for each in ["English", "Українська"]:
         button_list.append([InlineKeyboardButton(each, callback_data=each)])
-    update.message.reply_text('Hi!')
-    update.message.reply_text('Hi!')
-    update.message.reply_text(text="Choose a language\nВиберіть мову", reply_markup=InlineKeyboardMarkup(button_list[:2]), parse_mode='HTML')
+    update.message.reply_text(text="Hello!\nChoose a language\nВиберіть мову", reply_markup=InlineKeyboardMarkup(button_list[:2]), parse_mode='HTML')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
@@ -32,15 +29,13 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-def button_press(update, context):
+def button_press(self, bot, update):
     if update.message.text=='English':
         update.message.reply_text('You choose English!')
     elif update.message.text=='Українська':
         update.message.reply_text('Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
 
-def button_pressed(bot, update):
-    query=update.callback_query
-    bot.send_message(query.message.chat_id,str(query.data))
+
 def main():
     """Start the bot."""
 
@@ -48,7 +43,7 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-    dp.add_handler(CallbackQueryHandler(button_pressed))
+    dp.add_handler(CallbackQueryHandler(button_press))
     dp.add_handler(MessageHandler(Filters.text, button_press))
     dp.add_error_handler(error)
     updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
