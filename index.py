@@ -1,6 +1,7 @@
 import logging
 import os
 import telebot
+import config
 from telebot import types
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
@@ -12,18 +13,16 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 logger = logging.getLogger(__name__)
 
-PORT = int(os.environ.get('PORT', '8443'))
-TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
-bot = telebot.TeleBot(TOKEN)
-# Define a few command handlers. These usually take the two arguments update and
-# context. Error handlers also receive the raised TelegramError object in error.
+
+bot = telebot.TeleBot(config.TOKEN)
+
 def start(update, context):
     update.message.reply_text('Hi!')
     b1=types.KeyboardButton('English')
     b2=types.KeyboardButton('Українська')
     b3=types.KeyboardButton('Русский')
     update.message.reply_text('Hi!')
-    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
+    markup = types.ReplyKeyboardMarkup()
     update.message.reply_text('Hi!')
     markup.add(b1,b2,b3)
     update.message.reply_text('Hi!')
@@ -49,7 +48,7 @@ def main():
     # Create the Updater and pass it your bot's token.
     # Make sure to set use_context=True to use the new context based callbacks
     # Post version 12 this will no longer be necessary
-    APP_NAME='https://telebottobrother.herokuapp.com/'
+
     
     updater = Updater(TOKEN, use_context=True)
 
@@ -66,7 +65,7 @@ def main():
     # log all errors
     dp.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
+    updater.start_webhook(listen="0.0.0.0",port=config.PORT,url_path=config.TOKEN,webhook_url=config.APP_NAME + congig.TOKEN)
     updater.idle()
 
 
