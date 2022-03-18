@@ -18,26 +18,23 @@ logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(TOKEN)
 
+def cb_en(update):
+    bot.send_message(update.message.chat_id,"You choose English")
+
+def cb_ua(update):
+    bot.send_message(update.message.chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
+
 def start(update, context):
     update.message.reply_text('Hi!')
-    b1=types.KeyboardButton('English')
-    b2=types.KeyboardButton('Українська')
-    b3=types.KeyboardButton('Русский')
-    update.message.reply_text('Hi!')
-    markup = types.ReplyKeyboardMarkup()
-    update.message.reply_text('Hi!')
-    markup.add(b1,b2,b3)
-    update.message.reply_text('Hi!')
+    markup = InlineKeyboardMarkup()
+    markup.row_width = 2
+    markup.add(InlineKeyboardButton("English", callback_data="cb_en"),
+                               InlineKeyboardButton("Українська", callback_data="cb_ua"))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык", reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Developed by @Renamed_user11\nYou can use this bot but not forget that it is not your property')
-
-
-def echo(update, context):
-    """Echo the user message."""
-    update.message.reply_text(update.message.text)
 
 
 def error(update, context):
