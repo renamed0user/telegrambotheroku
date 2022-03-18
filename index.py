@@ -25,7 +25,7 @@ def start(update, context):
     update.message.reply_text('Hi!')
     reply_markup = InlineKeyboardMarkup(button_list)
     update.message.reply_text('Hi!')
-    context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", inline_markup=markup)
+    context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
