@@ -22,7 +22,7 @@ def start(update, context):
     update.message.reply_text('Hi!')
     reply_markup = InlineKeyboardMarkup(button_list[:2])
     update.message.reply_text('Hi!')
-    update.message.reply_text("Choose a language\nВиберіть мову", reply_markup=markup)
+    update.message.reply_text("Choose a language\nВиберіть мову", reply_markup=markup, parse_mode='HTML')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
