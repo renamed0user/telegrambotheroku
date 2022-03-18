@@ -3,7 +3,6 @@ import os
 import telebot
 
 from telebot import types
-
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 PORT = int(os.environ.get('PORT', '8443'))
@@ -18,11 +17,7 @@ logger = logging.getLogger(__name__)
 
 bot = telebot.TeleBot(TOKEN)
 
-def cb_en(update):
-    bot.send_message(update.message.chat_id,"You choose English")
 
-def cb_ua(update):
-    bot.send_message(update.message.chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
 
 def start(update, context):
     update.message.reply_text('Hi!')
@@ -44,26 +39,13 @@ def error(update, context):
 
 def main():
     """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    # Post version 12 this will no longer be necessary
 
-    
     updater = Updater(TOKEN, use_context=True)
-
-    # Get the dispatcher to register handlers
     dp = updater.dispatcher
-
-    # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
-
-    # on noncommand i.e message - echo the message on Telegram
     dp.add_handler(MessageHandler(Filters.text, echo))
-
-    # log all errors
     dp.add_error_handler(error)
-
     updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
     updater.idle()
 
