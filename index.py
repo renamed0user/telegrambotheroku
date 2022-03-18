@@ -19,10 +19,11 @@ logger = logging.getLogger(__name__)
 
 def start(update, context):
     update.message.reply_text('Hi!')
-    markup = InlineKeyboardMarkup()
+
+    
+    markup = InlineKeyboardMarkup([InlineKeyboardButton("English",callback_data='1'),
+                               InlineKeyboardButton("Українська",callback_data='2')])
     markup.row_width = 2
-    markup.add(InlineKeyboardButton("English",callback_data='1'),
-                               InlineKeyboardButton("Українська",callback_data='2'))
     context.bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
 
 def help(update, context):
