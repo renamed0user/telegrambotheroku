@@ -20,10 +20,10 @@ TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 def start(update, context):
     update.message.reply_text('Hi!')
     bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    b1=types.KeyboardButton('English')
-    b2=types.KeyboardButton('Українська')
-    b3=types.KeyboardButton('Русский')
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    b1=types.InlineKeyboardButton('English')
+    b2=types.InlineKeyboardButton('Українська')
+    b3=types.InlineKeyboardButton('Русский')
+    markup = types.InlineKeyboardMarkup(resize_keyboard=True)
     markup.add(b1,b2,b3)
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову\nВыберите язык",parse_mode='html', reply_markup=markup)
 
