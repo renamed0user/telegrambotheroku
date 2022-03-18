@@ -17,15 +17,6 @@ logger = logging.getLogger(__name__)
 
 
 def build_menu(buttons, n_cols=1, header_buttons=None, footer_buttons=None):
-    """
-    Returns a list of inline buttons used to generate inlinekeyboard responses
-    
-    :param buttons: `List` of InlineKeyboardButton
-    :param n_cols: Number of columns (number of list of buttons)
-    :param header_buttons: First button value
-    :param footer_buttons: Last button value
-    :return: `List` of inline buttons
-    """
     menu = [buttons[i:i + n_cols] for i in range(0, len(buttons), n_cols)]
     if header_buttons:
         menu.insert(0, header_buttons)
