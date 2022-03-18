@@ -14,17 +14,16 @@ logger = logging.getLogger(__name__)
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
-
+bot = telebot.TeleBot(TOKEN)
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
 def start(update, context):
     update.message.reply_text('Hi!')
-    bot = telebot.TeleBot('5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI')
-    b1=types.InlineKeyboardButton('English')
-    b2=types.InlineKeyboardButton('Українська')
-    b3=types.InlineKeyboardButton('Русский')
+    b1=types.KeyboardButton('English')
+    b2=types.KeyboardButton('Українська')
+    b3=types.KeyboardButton('Русский')
     update.message.reply_text('Hi!')
-    markup = types.InlineKeyboardMarkup()
+    markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
     update.message.reply_text('Hi!')
     markup.add(b1,b2,b3)
     update.message.reply_text('Hi!')
@@ -32,7 +31,7 @@ def start(update, context):
 
 def help(update, context):
     """Send a message when the command /help is issued."""
-    update.message.reply_text('Developed by renamed_user\nYou can use this but not forget that it is not your property')
+    update.message.reply_text('Developed by @Renamed_user11\nYou can use this bot but not forget that it is not your property')
 
 
 def echo(update, context):
