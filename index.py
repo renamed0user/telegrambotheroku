@@ -30,11 +30,12 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def button_press(self, bot, update):
-    if update.message.text=='English':
-        update.message.reply_text('You choose English!')
-    elif update.message.text=='Українська':
-        update.message.reply_text('Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
-
+    if update.callback_quary.message.text=='English':
+        bot.send_message(update.callback_quary.message.chat_id,'You choose English!')
+    elif update.callback_quary.message.text=='Українська':
+        bot.send_message(update.callback_quary.message.chat_id,'Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
+    else:
+        bot.send_message(update.callback_quary.message.chat_id,'Ви')
 
 def main():
     """Start the bot."""
