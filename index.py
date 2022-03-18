@@ -23,6 +23,7 @@ def cb_en(chat_id):
 
 def cb_ua(chat_id):
     bot.send_message(chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
+
 @bot.message_handler(commands=['start'])
 def start(update, context):
     update.message.reply_text('Hi!')
@@ -41,11 +42,6 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-
-def main():
-    """Start the bot."""
-    bot.set_webhook(APP_NAME)
-    server.run('0.0.0.0',PORT)
-    
+bot.polling()
 
 
