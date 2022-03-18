@@ -20,9 +20,8 @@ def start(update, context):
     for each in ["English", "Українська"]:
         button_list.append(InlineKeyboardButton(each, callback_data=each))
     update.message.reply_text('Hi!')
-    markup = InlineKeyboardMarkup(button_list[:2])
     update.message.reply_text('Hi!')
-    update.message.reply_text(text="Choose a language\nВиберіть мову", reply_markup=markup, parse_mode='HTML')
+    update.message.reply_text(text="Choose a language\nВиберіть мову", reply_markup=InlineKeyboardMarkup(button_list[:10]), parse_mode='HTML')
 
 def help(update, context):
     """Send a message when the command /help is issued."""
