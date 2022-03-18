@@ -1,12 +1,14 @@
 import logging
 import os
 import telebot
-import config
+
 from telebot import types
 
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
-
+PORT = int(os.environ.get('PORT', '8443'))
+TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
+APP_NAME='https://telebottobrother.herokuapp.com/'
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -14,7 +16,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 logger = logging.getLogger(__name__)
 
 
-bot = telebot.TeleBot(config.TOKEN)
+bot = telebot.TeleBot(TOKEN)
 
 def start(update, context):
     update.message.reply_text('Hi!')
@@ -50,7 +52,7 @@ def main():
     # Post version 12 this will no longer be necessary
 
     
-    updater = Updater(config.TOKEN, use_context=True)
+    updater = Updater(TOKEN, use_context=True)
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
@@ -65,7 +67,7 @@ def main():
     # log all errors
     dp.add_error_handler(error)
 
-    updater.start_webhook(listen="0.0.0.0",port=config.PORT,url_path=config.TOKEN,webhook_url=config.APP_NAME + congig.TOKEN)
+    updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
     updater.idle()
 
 
