@@ -1,6 +1,6 @@
 import os
 import telebot
-from flask import Flask, request
+from aiohttp import web
 from telebot import types
 
 
@@ -8,10 +8,20 @@ PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
 APP_NAME='https://telebottobrother.herokuapp.com/'
 
-app = Flask(__name__)
+app = web.Application()
 bot = telebot.TeleBot(TOKEN)
 bot.remove_webhook()
 
+async def handle(request):
+    if request.match_info.get("token") == bot.token:
+        request_body_dict = await request.json()
+        update = telebot.types.Update.de_json(request_body_dict)
+        bot.process_new_updates([update])
+        return web.Response()
+    else:
+        return web.Response(status=403)
+
+app.router.add_post("/{token}/", handle)
 def cb_en(chat_id):
     bot.send_message(chat_id,"You choose English")
 
@@ -37,7 +47,4 @@ def error(update, context):
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
-
-bot.set_webhook(APP_NAME + TOKEN)
-app.run()
-
+web.run_app(app,APP_NAME,PORT)
