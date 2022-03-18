@@ -32,6 +32,7 @@ def start(update, context):
     markup.add(types.InlineKeyboardButton("English", callback_data="cb_en"),
                                types.InlineKeyboardButton("Українська", callback_data="cb_ua"))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
+    update.message.reply_text(chat_id)
 
 def help(update, context):
     """Send a message when the command /help is issued."""
