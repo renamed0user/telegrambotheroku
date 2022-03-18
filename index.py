@@ -1,9 +1,9 @@
 import logging
 import os
 import telebot
-
+from flask import Flask, request
 from telebot import types
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5288239676:AAH40vF7Ymn41ODeJZYbTZKE-Wg1EbgkOoI'
@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                     level=logging.INFO)
 
 logger = logging.getLogger(__name__)
-
+server = Flask(__name__)
 
 bot = telebot.TeleBot(TOKEN)
 
@@ -23,7 +23,7 @@ def cb_en(chat_id):
 
 def cb_ua(chat_id):
     bot.send_message(chat_id,"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!")
-
+@bot.message_handler(commands=['start'])
 def start(update, context):
     update.message.reply_text('Hi!')
     markup = types.InlineKeyboardMarkup()
@@ -31,7 +31,7 @@ def start(update, context):
     markup.add(types.InlineKeyboardButton("English",callback_data='cb_en:update.message.chat_id'),
                                types.InlineKeyboardButton("Українська",callback_data='cb_ua:update.message.chat_id'))
     bot.send_message(update.message.chat_id, "Choose a language\nВиберіть мову", reply_markup=markup)
-
+@bot.message_handler(commands=['help'])
 def help(update, context):
     """Send a message when the command /help is issued."""
     update.message.reply_text('Developed by @Renamed_user11\nYou can use this bot but not forget that it is not your property')
@@ -44,15 +44,8 @@ def error(update, context):
 
 def main():
     """Start the bot."""
-
-    updater = Updater(TOKEN, use_context=True)
-    dp = updater.dispatcher
-    dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(CommandHandler("help", help))
-    dp.add_error_handler(error)
-    bot.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
-    updater.idle()
+    bot.set_webhook(APP_NAME)
+    server.run('0.0.0.0',PORT)
+    
 
 
-if __name__ == '__main__':
-    main()
