@@ -39,9 +39,6 @@ def button_press(update, context):
         for each in ["Погода"]:
             button_list.append([KeyboardButton(each, request_location=True)])
         context.bot.send_message(update.callback_query.message.chat_id,text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
-    elif update.callback_query.data=='Weather' or update.callback_query.data=='Погода':
-        context.bot.send_message(update.callback_query.message.chat_id,text=('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude)))
-
  
 
 def main():
