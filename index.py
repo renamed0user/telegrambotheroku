@@ -40,7 +40,7 @@ def button_press(update, context):
             button_list.append([InlineKeyboardButton(each, callback_data=each)])
         update.message.reply_text(text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=InlineKeyboardMarkup(button_list[:2]), parse_mode='HTML')
     elif update.callback_query.data=='Weather' or update.callback_query.data=='Погода':
-        update.message.reply_text('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude))
+        update.message.reply_text(text=('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude)))
 
  
 
