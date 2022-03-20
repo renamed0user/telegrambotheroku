@@ -42,10 +42,7 @@ def button_press(update, context):
     elif update.callback_query.data=='Weather' or update.callback_query.data=='Погода':
         update.message.reply_text('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude))
 
-
-
-def weather(update, context):
-    
+ 
 
 def main():
     """Start the bot."""
