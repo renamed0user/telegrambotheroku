@@ -34,13 +34,13 @@ def button_press(update, context):
     if update.callback_query.data=='English':
         for each in ["Weather"]:
             button_list.append([KeyboardButton(each, request_location=True)])
-        update.message.reply_text(text="You choose English\nSelect tusk", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
+        context.bot.send_message(update.callback_query.message.chat_id,text="You choose English\nSelect tusk", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
     elif update.callback_query.data=='Українська':
         for each in ["Погода"]:
             button_list.append([KeyboardButton(each, request_location=True)])
-        update.message.reply_text(text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
+        context.bot.send_message(update.callback_query.message.chat_id,text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
     elif update.callback_query.data=='Weather' or update.callback_query.data=='Погода':
-        update.message.reply_text(text=('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude)))
+        context.bot.send_message(update.callback_query.message.chat_id,text=('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude)))
 
  
 
