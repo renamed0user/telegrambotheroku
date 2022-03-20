@@ -30,10 +30,22 @@ def error(update, context):
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
 def button_press(update, context):
+    button_list = []
     if update.callback_query.data=='English':
-        context.bot.send_message(update.callback_query.message.chat_id,'You choose English!')
+        for each in ["Weather", "Weather"]:
+            button_list.append([InlineKeyboardButton(each, callback_data=each)])
+        update.message.reply_text(text="You choose English\nSelect tusk", reply_markup=InlineKeyboardMarkup(button_list[:2]), parse_mode='HTML')
     elif update.callback_query.data=='Українська':
-        context.bot.send_message(update.callback_query.message.chat_id,'Ви вибрали Українську\nСлава Україні!\nСмерть москалям!')
+        for each in ["Погода", "Погода"]:
+            button_list.append([InlineKeyboardButton(each, callback_data=each)])
+        update.message.reply_text(text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=InlineKeyboardMarkup(button_list[:2]), parse_mode='HTML')
+    elif update.callback_query.data=='Weather' or update.callback_query.data=='Погода':
+        update.message.reply_text('latitude: %s; longitude: %s'%(update.message.location.latitude,update.message.location.longitude))
+
+
+
+def weather(update, context):
+    
 
 def main():
     """Start the bot."""
@@ -42,6 +54,7 @@ def main():
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
+    dp.add_handler(CommandHandler("weather", weather))
     dp.add_handler(CallbackQueryHandler(button_press))
     dp.add_handler(MessageHandler(Filters.text, button_press))
     dp.add_error_handler(error)
