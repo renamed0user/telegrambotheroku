@@ -51,7 +51,7 @@ def get_weather(update, context):
     Lng=update.message.location.longitude
     mg=owm.weather_manager()
     weather=mg.weather_at_place(str(mg.weather_around_coords(Lat, Lng))).get_weather()
-    temp = weather.temperature('celsius')['temp']
+
     status = weather.detailed_status
     context.bot.send_message(update.message.chat_id,text='yfjgfjh')
 
