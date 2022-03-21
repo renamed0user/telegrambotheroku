@@ -1,6 +1,6 @@
 import logging
 import os
-import pyowm
+from pyowm import OWM
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
@@ -8,7 +8,7 @@ PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5124121118:AAH42elBsKKyC5IQmnPctrE2EBEifCPCzss'
 APP_NAME='https://telebottobrother.herokuapp.com/'
 OPENWEATHER_API='d80a4a56bbbc6aad2f5aeabaeab2cdaf'
-owm = pyowm.OWM(OPENWEATHER_API, language = 'ua')
+owm = OWM(OPENWEATHER_API, language = 'ua')
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
