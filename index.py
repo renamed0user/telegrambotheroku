@@ -47,7 +47,7 @@ def button_press(update, context):
         context.bot.send_message(update.callback_query.message.chat_id,text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
  
 def get_weather(update, context):
-    context.bot.send_message(update.message.chat_id,text=' ')
+    context.bot.send_message(update.message.chat_id,text='yfjgfjh')
 
 def main():
     """Start the bot."""
