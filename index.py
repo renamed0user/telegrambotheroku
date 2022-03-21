@@ -53,7 +53,7 @@ def get_weather(update, context):
     weather=mg.weather_at_place(mg.weather_around_coords(Lat, Lng)).weather
     temp = weather.temperature('celsius')['temp']
     status = weather.detailed_status
-    context.bot.send_message(update.message.chat_id,text=str(temp)+' '+str(status))
+    context.bot.send_message(update.message.chat_id,text='fdgfdg')
 
 def main():
     """Start the bot."""
