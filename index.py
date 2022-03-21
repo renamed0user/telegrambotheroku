@@ -1,11 +1,14 @@
 import logging
 import os
+import pyowm
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
 
 PORT = int(os.environ.get('PORT', '8443'))
 TOKEN = '5124121118:AAH42elBsKKyC5IQmnPctrE2EBEifCPCzss'
 APP_NAME='https://telebottobrother.herokuapp.com/'
+OPENWEATHER_API='d80a4a56bbbc6aad2f5aeabaeab2cdaf'
+owm = pyowm.OWM(OPENWEATHER_API, language = 'ua')
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
@@ -38,8 +41,13 @@ def button_press(update, context):
     elif update.callback_query.data=='Українська':
         for each in ["Погода"]:
             button_list.append([KeyboardButton(each, request_location=True)])
-        context.bot.send_message(update.callback_query.message.chat_id,text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
+        c"Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
  
+def get_weather(update, context):
+    Lat=update.message.location.latitude
+    Lng=update.message.location.longitude
+    weather=owm.weather_at_place(owm.weather_around_coords(Lat, Lng)).weather
+    context.bot.send_message(update.message.chat_id,text=weather)
 
 def main():
     """Start the bot."""
@@ -50,6 +58,7 @@ def main():
     dp.add_handler(CommandHandler("help", help))
     dp.add_handler(CallbackQueryHandler(button_press))
     dp.add_handler(MessageHandler(Filters.text, button_press))
+    dp.add_handler(MessageHandler(Filters.location, weather))
     dp.add_error_handler(error)
     updater.start_webhook(listen="0.0.0.0",port=PORT,url_path=TOKEN,webhook_url=APP_NAME + TOKEN)
     updater.idle()
