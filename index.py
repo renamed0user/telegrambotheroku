@@ -47,13 +47,7 @@ def button_press(update, context):
         context.bot.send_message(update.callback_query.message.chat_id,text="Ви вибрали Українську\nСлава Україні!\nСмерть москалям!\nОберіть завдання", reply_markup=ReplyKeyboardMarkup(button_list[:1]), parse_mode='HTML')
  
 def get_weather(update, context):
-    Lat=update.message.location.latitude
-    Lng=update.message.location.longitude
-    mg=owm.weather_manager()
-    weather=mg.weather_at_place(mg.weather_around_coords(Lat, Lng)).weather
-    temp = weather.temperature('celsius')['temp']
-    status = weather.detailed_status
-    context.bot.send_message(update.location.chat_id,text=str(status)+' '+str(temp))
+    context.bot.send_message(update.message.chat_id,text=' ')
 
 def main():
     """Start the bot."""
