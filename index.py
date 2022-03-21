@@ -1,6 +1,6 @@
 import logging
 import os
-from pyowm import OWM
+from pyowm.owm import OWM
 from pyowm.utils.config import get_default_config
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
